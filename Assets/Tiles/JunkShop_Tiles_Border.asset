@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: JunkShop_Tiles_Border
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 221990084, guid: 97f90b58eb6479641bdc5661a7505cd8, type: 3}
+  m_Sprite: {fileID: -2095004364, guid: 97f90b58eb6479641bdc5661a7505cd8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

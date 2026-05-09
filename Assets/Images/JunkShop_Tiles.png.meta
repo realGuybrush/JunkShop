@@ -5,6 +5,12 @@ TextureImporter:
   - first:
       213: 5693039311103434674
     second: JunkShop_Tiles_0
+  - first:
+      213: -3757406209046205352
+    second: JunkShop_Tiles_1
+  - first:
+      213: 4926895775238536175
+    second: JunkShop_Tiles_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -148,10 +154,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0b081d6fb01f56e408fddc4c56192064
-      internalID: 85549142
+      spriteID: 85c24f0e5f20bdbc0800000000000000
+      internalID: -3757406209046205352
       vertices: []
       indices: 
       edges: []
@@ -170,10 +176,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b75d6d121593dc840afd26102c85b186
-      internalID: -752938244
+      spriteID: feb37709a99df5440800000000000000
+      internalID: 4926895775238536175
       vertices: []
       indices: 
       edges: []
@@ -194,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c284917fb6fd71f46985722d09e58dcd
-      internalID: 276241481
+      spriteID: d7a636ee3a9aac6469d71d075c9fad7d
+      internalID: -1406918255
       vertices: []
       indices: 
       edges: []
@@ -216,8 +222,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a36638aad62e0848979596308b00a5b
-      internalID: -148876520
+      spriteID: 4571db6d3fdcb394caedcbe441fae443
+      internalID: -1991233617
       vertices: []
       indices: 
       edges: []
@@ -227,7 +233,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1011
-        y: 1
+        y: 2
         width: 200
         height: 200
       alignment: 0
@@ -238,8 +244,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f15bf54628a1eb41bcde5c3385dc876
-      internalID: 2098718504
+      spriteID: ad3e17736ce71af428a2911a78c8d8ac
+      internalID: -197964535
       vertices: []
       indices: 
       edges: []
@@ -260,8 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c609f772429517544958dba1b4f93517
-      internalID: -2016504905
+      spriteID: c8da0608bcc36b94783372ae32809bb2
+      internalID: -259471905
       vertices: []
       indices: 
       edges: []
@@ -275,15 +281,15 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e0000436cce78a499935e9bef78affc
-      internalID: 221990084
+      spriteID: aadd85922f1b5fd40931f9ec4bdae07b
+      internalID: -2095004364
       vertices: []
       indices: 
       edges: []
@@ -297,15 +303,15 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1a8d54d9aeb8ee418123566df7182e5
-      internalID: 243950862
+      spriteID: ba3af88be541df14c83798249fa1284b
+      internalID: 1476507780
       vertices: []
       indices: 
       edges: []
@@ -314,7 +320,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6ca617d8944646d4ebaef105bb6eb12b
+    spriteID: 2d72651914f891349b65c638dbe20b7c
     internalID: 0
     vertices: []
     indices: 
@@ -326,16 +332,15 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":200.0,"y":200.0},"gridSpriteOffset":{"x":1.0,"y":1.0},"gridSpritePadding":{"x":2.0,"y":2.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      JunkShop_Tiles_Asphalt: 2098718504
-      JunkShop_Tiles_AsphaltLine: -2016504905
-      JunkShop_Tiles_Border: 221990084
-      JunkShop_Tiles_BorderCorner: 243950862
+      JunkShop_Tiles_Asphalt: -197964535
+      JunkShop_Tiles_AsphaltLine: -259471905
+      JunkShop_Tiles_Border: -2095004364
+      JunkShop_Tiles_BorderCorner: 1476507780
       JunkShop_Tiles_Dirt: 5693039311103434674
-      JunkShop_Tiles_Grass1: 85549142
-      JunkShop_Tiles_Grass2: -752938244
-      JunkShop_Tiles_Grass3: 276241481
-      JunkShop_Tiles_Grass4: -148876520
-      s: -2016504905
+      JunkShop_Tiles_Grass1: -3757406209046205352
+      JunkShop_Tiles_Grass2: 4926895775238536175
+      JunkShop_Tiles_Grass3: -1406918255
+      JunkShop_Tiles_Grass4: -1991233617
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
