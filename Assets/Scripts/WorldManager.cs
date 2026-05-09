@@ -1,9 +1,14 @@
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class WorldManager : MonoBehaviour
 {
     public static WorldManager Instance;
+
+    [SerializeField]
+    private List<PolicemanControls> policemen;
 
     [SerializeField]
     private TextMeshProUGUI karmaText, earningsText, junkText, valuableText;
@@ -15,6 +20,28 @@ public class WorldManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+        foreach (var policeman in policemen)
+            policeman.OnAttack += HalfKarmaAndEarnings;
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var policeman in policemen)
+            policeman.OnAttack -= HalfKarmaAndEarnings;
+    }
+
+    private void HalfKarmaAndEarnings()
+    {
+        if (karma < -1)
+            karma /= 2;
+        else
+            karma = 0;
+        int earningLoss = (int) earnings / 2;
+        earnings -= Mathf.Max(earningLoss, earnings);
+        int valuablesLoss = (int) valuableHoard / 2;
+        valuableHoard -= Mathf.Max(valuablesLoss, valuableHoard);
+        UpdateKarma(0);
+        UpdateTexts();
     }
 
     public void AddToSack(bool valuable, float cost)
@@ -31,7 +58,6 @@ public class WorldManager : MonoBehaviour
         earningsText?.SetText(earnings.ToString());
         junkText?.SetText(junkHoard.ToString());
         valuableText?.SetText(valuableHoard.ToString());
-        karmaText?.SetText(karma.ToString());
     }
 
     public void Sell(bool valuable)
@@ -40,7 +66,7 @@ public class WorldManager : MonoBehaviour
         {
             earnings += valuableHoard;
             if(valuableHoard > 0)
-                karma -= Mathf.Max((int)valuableHoard / 10, 1);
+                UpdateKarma(-(int)valuableHoard);
             valuableHoard = 0;
         } else
         {
@@ -50,11 +76,24 @@ public class WorldManager : MonoBehaviour
         UpdateTexts();
     }
 
+    private void UpdateKarma(int delta)
+    {
+        karma += delta;
+        foreach (var policeman in policemen)
+            policeman.ChangeRadius(-karma);
+        karmaText?.SetText(karma.ToString());
+    }
+
     public void Return()
     {
         if (valuableHoard <= 0) return;
-        karma += Mathf.Max((int)valuableHoard / 33, 1);
+        UpdateKarma((int)valuableHoard / 3);
         valuableHoard = 0;
         UpdateTexts();
+    }
+
+    public void LowerKarmaForChasing()
+    {
+        UpdateKarma(-5);
     }
 }

@@ -1,35 +1,42 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class PedestrianControls : MonoBehaviour
+public class PedestrianControls : RandomWalker
 {
     [SerializeField]
-    private Rigidbody2D body;
+    private ScareTrigger scareTrigger;
 
     [SerializeField]
-    private float defaultSpeed, runawaySpeedMin, runawaySpeedMax, maxWalkingTime, chanceToStartWalking,
+    private float runawaySpeedMin, runawaySpeedMax,
         defaultDropChance, defaultDropIsLegendaryChance;
 
     [SerializeField]
     private List<GameObject> junkPrefabs = new List<GameObject>(), valuablesPrefabs = new List<GameObject>();
     
-    private float walkingTime, speed, bonusRunawaySpeed, dropChance, dropIsLegendaryChance;
-
-    private Vector2 walkDirection;
+    private float bonusRunawaySpeed, dropChance, dropIsLegendaryChance, dropChancesBonus;
 
     private void Awake()
     {
         bonusRunawaySpeed = Random.Range(runawaySpeedMin, runawaySpeedMax);
         dropChance = defaultDropChance;
         dropIsLegendaryChance = defaultDropIsLegendaryChance;
+        dropChancesBonus = 2f;
+        scareTrigger.OnScared += DoubleDropChance;
+        scareTrigger.OnEscaped += HalveDropChance;
     }
 
-    private void Update()
+    private void OnDestroy()
+    {
+        scareTrigger.OnScared -= DoubleDropChance;
+        scareTrigger.OnEscaped -= HalveDropChance;
+    }
+
+    protected override void Updating()
     {
         TryToDrop();
-        TryToStartWalkRandom();
-        UpdateTimer();
+        base.Updating();
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -57,30 +64,9 @@ public class PedestrianControls : MonoBehaviour
         }
     }
 
-    private void TryToStartWalkRandom()
+    protected override void Stop()
     {
-        if (Random.Range(0f, 1f) < chanceToStartWalking && !(walkingTime > 0))
-        {
-            walkingTime = Random.Range(0f, maxWalkingTime);
-            walkDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-            body.linearVelocity = walkDirection * speed;
-        }
-    }
-
-    private void UpdateTimer()
-    {
-        if (walkingTime > 0)
-        {
-            walkingTime -= Time.deltaTime;
-            if (walkingTime <= 0)
-                Stop();
-        }
-    }
-
-    private void Stop()
-    {
-        body.linearVelocity = Vector2.zero;
-        speed = defaultSpeed;
+        base.Stop();
         dropChance = defaultDropChance;
         dropIsLegendaryChance = defaultDropIsLegendaryChance;
     }
@@ -88,9 +74,19 @@ public class PedestrianControls : MonoBehaviour
     private void RunAway(Vector3 playerPosition)
     {
         speed = defaultSpeed * bonusRunawaySpeed;
-        dropChance = defaultDropChance * 2;
-        dropIsLegendaryChance = defaultDropIsLegendaryChance * 2;
+        dropChance = defaultDropChance * dropChancesBonus;
+        dropIsLegendaryChance = defaultDropIsLegendaryChance * dropChancesBonus;
         walkingTime = 1f;
         body.linearVelocity = (transform.position - playerPosition).normalized * speed;
+    }
+
+    private void DoubleDropChance()
+    {
+        dropChancesBonus *= 2;
+    }
+
+    private void HalveDropChance()
+    {
+        dropChancesBonus /= 2;
     }
 }

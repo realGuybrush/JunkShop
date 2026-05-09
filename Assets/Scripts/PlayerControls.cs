@@ -13,7 +13,7 @@ public class PlayerControls : MonoBehaviour
     private Rigidbody2D body;
 
     [SerializeField]
-    private float speed;
+    private float speed, stunTime;
 
     [SerializeField]
     private GameObject picker;
@@ -78,5 +78,21 @@ public class PlayerControls : MonoBehaviour
         picker.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         picker.SetActive(false);
+    }
+
+    public void GetDamaged(Vector3 position, float kickStrength)
+    {
+        body.bodyType = RigidbodyType2D.Dynamic;
+        body.AddForce((transform.position - position).normalized * kickStrength);
+        StartCoroutine("GetStunned");
+    }
+
+    private IEnumerator GetStunned()
+    {
+        DisableInputActions();
+        yield return new WaitForSeconds(stunTime);
+        EnableInputActions();
+        body.bodyType = RigidbodyType2D.Kinematic;
+        body.linearVelocity = Vector2.zero;
     }
 }
