@@ -54,6 +54,7 @@ public class WorldManager : MonoBehaviour
     {
         if (valuableHoard <= 0) return;
         karma += Mathf.Max((int)valuableHoard / 33, 1);
+        valuableHoard = 0;
         UpdateTexts();
     }
 }
