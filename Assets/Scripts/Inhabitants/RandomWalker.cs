@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,18 +14,29 @@ public class RandomWalker : MonoBehaviour
     private float maxWalkingTime, chanceToStartWalking;
     
     protected float walkingTime, speed;
+
+    private void Awake()
+    {
+        Awaking();
+    }
+
     void Update()
     {
         Updating();
     }
 
+    protected virtual void Awaking()
+    {
+        speed = defaultSpeed;
+    }
+
     protected virtual void Updating()
     {
-        TryToStartWalkRandom();
+        DefaultWalkingPattern();
         UpdateTimer();
     }
 
-    private void TryToStartWalkRandom()
+    protected virtual void DefaultWalkingPattern()
     {
         if (Random.Range(0f, 1f) < chanceToStartWalking && !(walkingTime > 0))
         {

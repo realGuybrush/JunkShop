@@ -82,7 +82,6 @@ public class PlayerControls : MonoBehaviour
 
     public void GetDamaged(Vector3 position, float kickStrength)
     {
-        body.bodyType = RigidbodyType2D.Dynamic;
         body.AddForce((transform.position - position).normalized * kickStrength);
         StartCoroutine("GetStunned");
     }
@@ -92,7 +91,6 @@ public class PlayerControls : MonoBehaviour
         DisableInputActions();
         yield return new WaitForSeconds(stunTime);
         EnableInputActions();
-        body.bodyType = RigidbodyType2D.Kinematic;
         body.linearVelocity = Vector2.zero;
     }
 }

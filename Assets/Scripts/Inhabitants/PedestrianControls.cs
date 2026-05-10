@@ -17,8 +17,9 @@ public class PedestrianControls : RandomWalker
     
     private float bonusRunawaySpeed, dropChance, dropIsLegendaryChance, dropChancesBonus;
 
-    private void Awake()
+    protected override void Awaking()
     {
+        base.Awaking();
         bonusRunawaySpeed = Random.Range(runawaySpeedMin, runawaySpeedMax);
         dropChance = defaultDropChance;
         dropIsLegendaryChance = defaultDropIsLegendaryChance;
