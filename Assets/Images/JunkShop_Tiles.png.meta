@@ -316,6 +316,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: JunkShop_Tiles_StripedLine
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 1
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f5bd16eafec86846be81240564093a6
+      internalID: 573757675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkShop_Tiles_BorderDiag
+      rect:
+        serializedVersion: 2
+        x: 2021
+        y: 1
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9c09f1a988ea934898d191fe47c44bc
+      internalID: -139984704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -336,11 +380,13 @@ TextureImporter:
       JunkShop_Tiles_AsphaltLine: -259471905
       JunkShop_Tiles_Border: -2095004364
       JunkShop_Tiles_BorderCorner: 1476507780
+      JunkShop_Tiles_BorderDiag: -139984704
       JunkShop_Tiles_Dirt: 5693039311103434674
       JunkShop_Tiles_Grass1: -3757406209046205352
       JunkShop_Tiles_Grass2: 4926895775238536175
       JunkShop_Tiles_Grass3: -1406918255
       JunkShop_Tiles_Grass4: -1991233617
+      JunkShop_Tiles_StripedLine: 573757675
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
