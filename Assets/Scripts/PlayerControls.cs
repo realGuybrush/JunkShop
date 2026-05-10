@@ -8,6 +8,12 @@ public class PlayerControls : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInputActions;
     private InputAction move, act;
+
+    [SerializeField]
+    private Animator animator, armAnimator;
+
+    [SerializeField]
+    private GameObject images;
     
     [SerializeField]
     private Rigidbody2D body;
@@ -66,6 +72,16 @@ public class PlayerControls : MonoBehaviour
     private void HandleMovement(InputAction.CallbackContext callbackContext)
     {
         body.linearVelocity = move.ReadValue<Vector2>() * speed;
+        Flip();
+        animator.SetBool("Move", body.linearVelocity.magnitude > 0);
+    }
+
+    private void Flip()
+    {
+        if (body.linearVelocity.x > 0)
+            images.transform.eulerAngles = Vector3.zero;
+        if (body.linearVelocity.x < 0)
+            images.transform.eulerAngles = new Vector3(0, 180, 0);
     }
 
     private void HandleAction(InputAction.CallbackContext callbackContext)
@@ -76,7 +92,9 @@ public class PlayerControls : MonoBehaviour
     private IEnumerator PickUpAll()
     {
         picker.SetActive(true);
+        armAnimator.SetBool("Poke", true);
         yield return new WaitForSeconds(0.2f);
+        armAnimator.SetBool("Poke", false);
         picker.SetActive(false);
     }
 
@@ -89,7 +107,9 @@ public class PlayerControls : MonoBehaviour
     private IEnumerator GetStunned()
     {
         DisableInputActions();
+        animator.SetBool("Damaged", true);
         yield return new WaitForSeconds(stunTime);
+        animator.SetBool("Damaged", false);
         EnableInputActions();
         body.linearVelocity = Vector2.zero;
     }
