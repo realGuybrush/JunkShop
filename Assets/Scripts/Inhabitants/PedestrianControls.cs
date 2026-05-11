@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -13,7 +12,7 @@ public class PedestrianControls : RandomWalker
         defaultDropChance, defaultDropIsLegendaryChance;
 
     [SerializeField]
-    private List<GameObject> junkPrefabs = new List<GameObject>(), valuablesPrefabs = new List<GameObject>();
+    private List<Item> junkPrefabs = new List<Item>(), valuablesPrefabs = new List<Item>();
     
     private float bonusRunawaySpeed, dropChance, dropIsLegendaryChance, dropChancesBonus;
 
@@ -24,6 +23,7 @@ public class PedestrianControls : RandomWalker
         dropChance = defaultDropChance;
         dropIsLegendaryChance = defaultDropIsLegendaryChance;
         dropChancesBonus = 2f;
+        SetDrops();
         scareTrigger.OnScared += DoubleDropChance;
         scareTrigger.OnEscaped += HalveDropChance;
     }
@@ -38,6 +38,15 @@ public class PedestrianControls : RandomWalker
     {
         TryToDrop();
         base.Updating();
+    }
+
+    private void SetDrops()
+    {
+        junkPrefabs = new List<Item>();
+        valuablesPrefabs = new List<Item>();
+        for(int i=0; i<3; i++)
+            junkPrefabs.Add(WorldManager.Instance.GetRandomJunk());
+        valuablesPrefabs.Add(WorldManager.Instance.GetRandomValuable());
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -79,6 +88,8 @@ public class PedestrianControls : RandomWalker
         dropIsLegendaryChance = defaultDropIsLegendaryChance * dropChancesBonus;
         walkingTime = 1f;
         body.linearVelocity = (transform.position - playerPosition).normalized * speed;
+        animator.SetBool("Move", true);
+        Flip();
     }
 
     private void DoubleDropChance()

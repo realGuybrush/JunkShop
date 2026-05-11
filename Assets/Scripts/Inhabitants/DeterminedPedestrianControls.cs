@@ -21,5 +21,7 @@ public class DeterminedPedestrianControls : PedestrianControls
         if (walkingTime > 0) return;
         body.linearVelocity = (goal - transform.position).normalized * speed;
         walkingTime = 1000f;
+        animator.SetBool("Move", true);
+        Flip();
     }
 }

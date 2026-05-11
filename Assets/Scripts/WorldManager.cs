@@ -170,4 +170,14 @@ public class WorldManager : MonoBehaviour
     {
         UpdateKarma(-5);
     }
+
+    public Item GetRandomJunk()
+    {
+        return junkPrefabs[Random.Range(0, junkPrefabs.Count)];
+    }
+    
+    public Item GetRandomValuable()
+    {
+        return valuablesPrefabs[Random.Range(0, valuablesPrefabs.Count)];
+    }
 }

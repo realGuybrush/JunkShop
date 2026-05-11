@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5965541024602854279}
   - component: {fileID: 1450070320795060450}
   m_Layer: 7
-  m_Name: TestItemJunk
+  m_Name: Junk_ChipsPackage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 3871742492850452356, guid: 01fbfd3fea4b881449b0df262d6b6794, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,4 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
   valuable: 0
-  cost: 1
+  cost: 0.05

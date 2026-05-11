@@ -35,6 +35,8 @@ public class PolicemanControls : RandomWalker
     {
         attackTrigger.gameObject.SetActive(false);
         chaseTrigger.enabled = false;
+        animator.SetBool("Move", false);
+        animator.SetBool("Attack", true);
         OnAttack?.Invoke();
         StartCoroutine("Wait");
     }
@@ -43,12 +45,15 @@ public class PolicemanControls : RandomWalker
     {
         body.linearVelocity = Vector2.zero;
         yield return new WaitForSeconds(2f);
+        animator.SetBool("Attack", false);
     }
 
     private void Follow(Vector3 playerPosition)
     {
         body.linearVelocity = (playerPosition - transform.position).normalized * speed * bonusChaseSpeed;
         attackTrigger.gameObject.SetActive(true);
+        animator.SetBool("Move", true);
+        Flip();
     }
 
     public void ChangeRadius(float multiplier)
