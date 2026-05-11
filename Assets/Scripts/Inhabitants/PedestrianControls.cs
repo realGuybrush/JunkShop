@@ -57,8 +57,9 @@ public class PedestrianControls : RandomWalker
 
     private void TryToDrop()
     {
-        if (Random.Range(0f, 1f) < dropChance)
-            Drop(Random.Range(0f, 1f) < dropIsLegendaryChance);
+        if(Time.timeScale > 0)
+            if (Random.Range(0f, 1f) < dropChance)
+                Drop(Random.Range(0f, 1f) < dropIsLegendaryChance);
     }
 
     private void Drop(bool legendary)

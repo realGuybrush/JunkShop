@@ -46,8 +46,11 @@ public class WorldManager : MonoBehaviour
 
     private void Update()
     {
-        TrySpawnWalker();
-        TrySpawnItem();
+        if(Time.timeScale > 0)
+        {
+            TrySpawnWalker();
+            TrySpawnItem();
+        }
     }
 
     private void OnDestroy()
