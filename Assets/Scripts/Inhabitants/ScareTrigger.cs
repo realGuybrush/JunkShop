@@ -4,6 +4,9 @@ using UnityEngine;
 public class ScareTrigger : MonoBehaviour
 {
     [SerializeField]
+    private AudioSource wah;
+    
+    [SerializeField]
     private GameObject scaredText;
 
     private bool tooClose = false;
@@ -30,6 +33,7 @@ public class ScareTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.layer.Equals(LayerMask.NameToLayer("Player"))) return;
+        wah.Play();
         scaredText.SetActive(true);
         tooClose = true;
         chaseTimer = 1f;

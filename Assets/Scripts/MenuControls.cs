@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -38,5 +39,9 @@ public class MenuControls : MonoBehaviour
     {
         RestoreTime();
         SceneManager.LoadScene("MainMenuScene");
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource bonk, oof;
 
     [SerializeField]
     private PlayerInput playerInputActions;
@@ -101,6 +103,8 @@ public class PlayerControls : MonoBehaviour
     public void GetDamaged(Vector3 position, float kickStrength)
     {
         body.AddForce((transform.position - position).normalized * kickStrength);
+        bonk.Play();
+        oof.Play();
         StartCoroutine("GetStunned");
     }
 

@@ -826,7 +826,7 @@ MonoBehaviour:
   body: {fileID: 3729250913762112183}
   images: {fileID: 5368062436280543016}
   animator: {fileID: 9167807166048558993}
-  defaultSpeed: 3
+  defaultSpeed: 2.7
   maxWalkingTime: 2.5
   chanceToStartWalking: 0.005
   attackTrigger: {fileID: 5106693220668832341}

@@ -8,6 +8,9 @@ public class WorldManager : MonoBehaviour
     public static WorldManager Instance;
 
     [SerializeField]
+    private AudioSource pickUpJunk, pickUpValuable;
+    
+    [SerializeField]
     private List<Transform> doors;
 
     [SerializeField]
@@ -39,6 +42,7 @@ public class WorldManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
         if (Instance == null)
             Instance = this;
         InitSlackingPeople();
@@ -79,18 +83,22 @@ public class WorldManager : MonoBehaviour
 
     private Vector3 RandomCoordinates()
     {
-        return new Vector3(Random.Range(-halfMapWidth, halfMapWidth),
+        Vector3 output = new Vector3(Random.Range(-halfMapWidth, halfMapWidth),
             Random.Range(-halfMapHeight, halfMapHeight));
+        while (output.magnitude > halfMapWidth)
+            output = new Vector3(Random.Range(-halfMapWidth, halfMapWidth),
+            Random.Range(-halfMapHeight, halfMapHeight));
+        return output;
     }
 
     private void HalfKarmaAndEarnings()
     {
-        if (karma < -1)
-            karma /= 2;
+        if (karma < -4)
+            karma -= karma / 5;
         else
             karma = 0;
-        int earningLoss = (int) earnings / 2;
-        earnings -= Mathf.Max(earningLoss, earnings);
+        earnings -= earnings / 5;
+        if (earnings < 0.01f) earnings = 0;
         int valuablesLoss = (int) valuableHoard / 2;
         valuableHoard -= Mathf.Max(valuablesLoss, valuableHoard);
         UpdateKarma(0);
@@ -124,9 +132,14 @@ public class WorldManager : MonoBehaviour
     public void AddToSack(bool valuable, float cost)
     {
         if (valuable)
+        {
             valuableHoard += cost;
-        else
+            pickUpValuable.Play();
+        } else
+        {
             junkHoard += cost;
+            pickUpJunk.Play();
+        }
         UpdateTexts();
     }
 
@@ -143,7 +156,7 @@ public class WorldManager : MonoBehaviour
         {
             earnings += valuableHoard;
             if(valuableHoard > 0)
-                UpdateKarma(-(int)valuableHoard);
+                UpdateKarma(-(int)valuableHoard / 10);
             valuableHoard = 0;
         } else
         {
@@ -164,7 +177,7 @@ public class WorldManager : MonoBehaviour
     public void Return()
     {
         if (valuableHoard <= 0) return;
-        UpdateKarma((int)valuableHoard / 3);
+        UpdateKarma((int)valuableHoard / 33);
         valuableHoard = 0;
         UpdateTexts();
     }
@@ -183,4 +196,7 @@ public class WorldManager : MonoBehaviour
     {
         return valuablesPrefabs[Random.Range(0, valuablesPrefabs.Count)];
     }
+
+    public int Karma => karma;
+    public float Earnings => earnings;
 }

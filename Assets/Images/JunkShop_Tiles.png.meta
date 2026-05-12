@@ -360,6 +360,116 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: JunkShop_Tiles_AshpaltDiagRB
+      rect:
+        serializedVersion: 2
+        x: 2223
+        y: 1
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4dc79ff03137c842aaeb636e7373b66
+      internalID: -1925795656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkShop_Tiles_AsphaltDiagLB
+      rect:
+        serializedVersion: 2
+        x: 2425
+        y: 1
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c948e122e400634ca48f4796cb190f4
+      internalID: -1751554088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkShop_Tiles_AsphaltDiagRT
+      rect:
+        serializedVersion: 2
+        x: 2627
+        y: 1
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2f1dfa003ba6f74e87b9f496105683e
+      internalID: 802966511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkShop_Tiles_AsphaltDiagLT
+      rect:
+        serializedVersion: 2
+        x: 2829
+        y: 1
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a9c24a5af17fd147b5a7940ad57b2f6
+      internalID: 2073364958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkShop_Tiles_GrassEdge
+      rect:
+        serializedVersion: 2
+        x: 3031
+        y: 1
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a38f1c4f363f1c64b902f58e642be74e
+      internalID: -2022912824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -376,7 +486,11 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":200.0,"y":200.0},"gridSpriteOffset":{"x":1.0,"y":1.0},"gridSpritePadding":{"x":2.0,"y":2.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
+      JunkShop_Tiles_AshpaltDiagRB: -1925795656
       JunkShop_Tiles_Asphalt: -197964535
+      JunkShop_Tiles_AsphaltDiagLB: -1751554088
+      JunkShop_Tiles_AsphaltDiagLT: 2073364958
+      JunkShop_Tiles_AsphaltDiagRT: 802966511
       JunkShop_Tiles_AsphaltLine: -259471905
       JunkShop_Tiles_Border: -2095004364
       JunkShop_Tiles_BorderCorner: 1476507780
@@ -386,6 +500,7 @@ TextureImporter:
       JunkShop_Tiles_Grass2: 4926895775238536175
       JunkShop_Tiles_Grass3: -1406918255
       JunkShop_Tiles_Grass4: -1991233617
+      JunkShop_Tiles_GrassEdge: -2022912824
       JunkShop_Tiles_StripedLine: 573757675
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
