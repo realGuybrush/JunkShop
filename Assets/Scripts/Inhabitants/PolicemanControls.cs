@@ -14,20 +14,30 @@ public class PolicemanControls : RandomWalker
     [SerializeField]
     private float chaseSpeedMin, chaseSpeedMax;
     
-    private float defaultRadius, bonusChaseSpeed;
+    private float defaultRadius, chaseSpeed;
     
     public event Action OnAttack = delegate { };
 
-    private void Awake()
+    protected override void Awaking()
     {
+        base.Awaking();
         defaultRadius = chaseTrigger.radius;
-        bonusChaseSpeed = Random.Range(chaseSpeedMin, chaseSpeedMax);
+        chaseSpeed = Random.Range(chaseSpeedMin, chaseSpeedMax) * speed;
         attackTrigger.OnReached += Attack;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer.Equals(playerLayer))
+        {
+            attackTrigger.gameObject.SetActive(true);
+            animator.SetBool("Move", true);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.layer.Equals(LayerMask.NameToLayer("Player")))
+        if (other.gameObject.layer.Equals(playerLayer))
             Follow(other.transform.position);
     }
 
@@ -50,15 +60,14 @@ public class PolicemanControls : RandomWalker
 
     private void Follow(Vector3 playerPosition)
     {
-        body.linearVelocity = (playerPosition - transform.position).normalized * speed * bonusChaseSpeed;
-        attackTrigger.gameObject.SetActive(true);
+        body.linearVelocity = (playerPosition - transform.position).normalized * chaseSpeed;
         animator.SetBool("Move", true);
         Flip();
     }
 
     public void ChangeRadius(float multiplier)
     {
-        chaseTrigger.radius = defaultRadius * multiplier;
+        chaseTrigger.radius = Mathf.Min(defaultRadius * multiplier, 50f);
         chaseTrigger.enabled = multiplier > 0;
     }
 }

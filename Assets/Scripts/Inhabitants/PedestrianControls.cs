@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,7 +15,7 @@ public class PedestrianControls : RandomWalker
     [SerializeField]
     private List<Item> junkPrefabs = new List<Item>(), valuablesPrefabs = new List<Item>();
     
-    private float bonusRunawaySpeed, dropChance, dropIsLegendaryChance, dropChancesBonus;
+    private float bonusRunawaySpeed, dropChance, dropIsLegendaryChance, dropChancesBonus, runningDropChance, scaredDropChance;
 
     protected override void Awaking()
     {
@@ -23,6 +24,7 @@ public class PedestrianControls : RandomWalker
         dropChance = defaultDropChance;
         dropIsLegendaryChance = defaultDropIsLegendaryChance;
         dropChancesBonus = 2f;
+        runningDropChance = defaultDropChance * dropChancesBonus;
         SetDrops();
         scareTrigger.OnScared += DoubleDropChance;
         scareTrigger.OnEscaped += HalveDropChance;
@@ -49,10 +51,24 @@ public class PedestrianControls : RandomWalker
         valuablesPrefabs.Add(WorldManager.Instance.GetRandomValuable());
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer.Equals(playerLayer))
+            SetParametersToRunMode();
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.layer.Equals(LayerMask.NameToLayer("Player")))
+        if (other.gameObject.layer.Equals(playerLayer))
             RunAway(other.transform.position);
+    }
+
+    private void SetParametersToRunMode()
+    {
+        speed = defaultSpeed * bonusRunawaySpeed;
+        dropChance = runningDropChance;
+        dropIsLegendaryChance = defaultDropIsLegendaryChance * dropChancesBonus;
+        animator.SetBool("Move", true);
     }
 
     private void TryToDrop()
@@ -84,12 +100,8 @@ public class PedestrianControls : RandomWalker
 
     private void RunAway(Vector3 playerPosition)
     {
-        speed = defaultSpeed * bonusRunawaySpeed;
-        dropChance = defaultDropChance * dropChancesBonus;
-        dropIsLegendaryChance = defaultDropIsLegendaryChance * dropChancesBonus;
         walkingTime = 1f;
         body.linearVelocity = (transform.position - playerPosition).normalized * speed;
-        animator.SetBool("Move", true);
         Flip();
     }
 

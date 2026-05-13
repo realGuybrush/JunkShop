@@ -21,8 +21,12 @@ public class RandomWalker : MonoBehaviour
     
     protected float walkingTime, speed;
 
+    protected LayerMask playerLayer;
+
     private void Awake()
     {
+        playerLayer = LayerMask.NameToLayer("Player");
+        speed = defaultSpeed;
         Awaking();
     }
 
@@ -33,7 +37,6 @@ public class RandomWalker : MonoBehaviour
 
     protected virtual void Awaking()
     {
-        speed = defaultSpeed;
     }
 
     protected virtual void Updating()

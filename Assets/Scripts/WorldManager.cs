@@ -108,7 +108,7 @@ public class WorldManager : MonoBehaviour
     private void TrySpawnWalker()
     {
         if (Random.Range(0f, 1f) < chanceToSpawnWalker)
-            Instantiate(walkerPrefab, RandomDoor(Vector3.zero), new Quaternion());
+            Instantiate(walkerPrefab, RandomDoor(Vector3.zero) * 0.98f, new Quaternion());
     }
 
     public Vector3 RandomDoor(Vector3 exclude)
