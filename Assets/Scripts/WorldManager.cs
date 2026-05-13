@@ -20,7 +20,7 @@ public class WorldManager : MonoBehaviour
     private GameObject walkerPrefab;
 
     [SerializeField]
-    private int maxSlackersAmount, maxPolicemenAmount;
+    private int maxSlackersAmount, maxPolicemenAmount, maxItemsAmount;
 
     [SerializeField]
     private float halfMapWidth, halfMapHeight, chanceToSpawnWalker, chanceToSpawnItem, valItemPercentage;
@@ -39,6 +39,8 @@ public class WorldManager : MonoBehaviour
 
     private float earnings, junkHoard, valuableHoard;
     private int karma;
+
+    private List<Item> items = new List<Item>();
 
     private void Awake()
     {
@@ -123,10 +125,22 @@ public class WorldManager : MonoBehaviour
     private void TrySpawnItem()
     {
         if (Random.Range(0f, 1f) < chanceToSpawnItem)
-            Instantiate(Random.Range(0f, 1f) < valItemPercentage ?
-                    valuablesPrefabs[Random.Range(0, valuablesPrefabs.Count)] :
-                    junkPrefabs[Random.Range(0, junkPrefabs.Count)],
-                    RandomCoordinates(), new Quaternion());
+            if (Random.Range(0f, 1f) < valItemPercentage)
+                SpawnValuable(Random.Range(0, valuablesPrefabs.Count), RandomCoordinates());
+            else
+                SpawnJunk(Random.Range(0, junkPrefabs.Count), RandomCoordinates());
+    }
+
+    public void SpawnJunk(int index, Vector3 position)
+    {
+        //if(items.Count < maxItemsAmount)
+            items.Add(Instantiate(junkPrefabs[index],position, new Quaternion()));
+    }
+    
+    public void SpawnValuable(int index, Vector3 position)
+    {
+        //if(items.Count < maxItemsAmount)
+            items.Add(Instantiate(valuablesPrefabs[index], position, new Quaternion()));
     }
 
     public void AddToSack(bool valuable, float cost)
@@ -187,14 +201,14 @@ public class WorldManager : MonoBehaviour
         UpdateKarma(-5);
     }
 
-    public Item GetRandomJunk()
+    public int GetRandomJunk()
     {
-        return junkPrefabs[Random.Range(0, junkPrefabs.Count)];
+        return Random.Range(0, junkPrefabs.Count);
     }
     
-    public Item GetRandomValuable()
+    public int GetRandomValuable()
     {
-        return valuablesPrefabs[Random.Range(0, valuablesPrefabs.Count)];
+        return Random.Range(0, valuablesPrefabs.Count);
     }
 
     public int Karma => karma;

@@ -15,7 +15,8 @@ public class PolicemanControls : RandomWalker
     private float chaseSpeedMin, chaseSpeedMax;
     
     private float defaultRadius, chaseSpeed;
-    
+    private int attackHash = Animator.StringToHash("Attack");
+
     public event Action OnAttack = delegate { };
 
     protected override void Awaking()
@@ -31,7 +32,7 @@ public class PolicemanControls : RandomWalker
         if (other.gameObject.layer.Equals(playerLayer))
         {
             attackTrigger.gameObject.SetActive(true);
-            animator.SetBool("Move", true);
+            animator.SetBool(moveHash, true);
         }
     }
 
@@ -45,8 +46,8 @@ public class PolicemanControls : RandomWalker
     {
         attackTrigger.gameObject.SetActive(false);
         chaseTrigger.enabled = false;
-        animator.SetBool("Move", false);
-        animator.SetBool("Attack", true);
+        animator.SetBool(moveHash, false);
+        animator.SetBool(attackHash, true);
         OnAttack?.Invoke();
         StartCoroutine("Wait");
     }
@@ -55,13 +56,13 @@ public class PolicemanControls : RandomWalker
     {
         body.linearVelocity = Vector2.zero;
         yield return new WaitForSeconds(2f);
-        animator.SetBool("Attack", false);
+        animator.SetBool(attackHash, false);
     }
 
     private void Follow(Vector3 playerPosition)
     {
         body.linearVelocity = (playerPosition - transform.position).normalized * chaseSpeed;
-        animator.SetBool("Move", true);
+        animator.SetBool(moveHash, true);
         Flip();
     }
 

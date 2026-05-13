@@ -22,6 +22,7 @@ public class RandomWalker : MonoBehaviour
     protected float walkingTime, speed;
 
     protected LayerMask playerLayer;
+    protected int moveHash = Animator.StringToHash("Move");
 
     private void Awake()
     {
@@ -51,7 +52,7 @@ public class RandomWalker : MonoBehaviour
         {
             walkingTime = Random.Range(0f, maxWalkingTime);
             body.linearVelocity = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * speed;
-            animator.SetBool("Move", true);
+            animator.SetBool(moveHash, true);
             Flip();
         }
     }
@@ -82,6 +83,6 @@ public class RandomWalker : MonoBehaviour
     {
         body.linearVelocity = Vector2.zero;
         speed = defaultSpeed;
-        animator.SetBool("Move", false);
+        animator.SetBool(moveHash, false);
     }
 }

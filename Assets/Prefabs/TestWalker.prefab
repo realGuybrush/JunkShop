@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 503289571876701928}
   - component: {fileID: 359981265077197309}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GenericHuman.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4669550678634176458}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Images
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5462308930492985735}
   - component: {fileID: 5901345282436119193}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GenericHuman.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 1900719147346398052}
   - component: {fileID: 4136914302404891990}
   - component: {fileID: 6504050326190072264}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestWalker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 47132914352315741}
   - component: {fileID: 6214535510046285969}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GenericHuman.4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 777762901868404638}
   - component: {fileID: 4066738074374700351}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 746038435888925833}
   - component: {fileID: 1125515647439254739}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wah
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 2683636252451412349}
   - component: {fileID: 7980429699746252110}
   - component: {fileID: 8410261330387000836}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 5367399263961061444}
   - component: {fileID: 1370914197908747961}
   - component: {fileID: 4294881711924381350}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ScareTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,7 +782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3591035197078023050}
   - component: {fileID: 5637009035603199339}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GenericHuman.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +873,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2864707286286792817}
   - component: {fileID: 9035823874486235512}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ScaredText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -964,7 +964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1260305147210523340}
   - component: {fileID: 23554471463455023}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GenericHuman.5
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,7 +13,7 @@ public class PedestrianControls : RandomWalker
         defaultDropChance, defaultDropIsLegendaryChance;
 
     [SerializeField]
-    private List<Item> junkPrefabs = new List<Item>(), valuablesPrefabs = new List<Item>();
+    private List<int> junkPrefabs = new List<int>(), valuablesPrefabs = new List<int>();
     
     private float bonusRunawaySpeed, dropChance, dropIsLegendaryChance, dropChancesBonus, runningDropChance, scaredDropChance;
 
@@ -44,8 +44,8 @@ public class PedestrianControls : RandomWalker
 
     private void SetDrops()
     {
-        junkPrefabs = new List<Item>();
-        valuablesPrefabs = new List<Item>();
+        junkPrefabs = new List<int>();
+        valuablesPrefabs = new List<int>();
         for(int i=0; i<3; i++)
             junkPrefabs.Add(WorldManager.Instance.GetRandomJunk());
         valuablesPrefabs.Add(WorldManager.Instance.GetRandomValuable());
@@ -68,7 +68,7 @@ public class PedestrianControls : RandomWalker
         speed = defaultSpeed * bonusRunawaySpeed;
         dropChance = runningDropChance;
         dropIsLegendaryChance = defaultDropIsLegendaryChance * dropChancesBonus;
-        animator.SetBool("Move", true);
+        animator.SetBool(moveHash, true);
     }
 
     private void TryToDrop()
@@ -83,11 +83,11 @@ public class PedestrianControls : RandomWalker
         if(legendary)
         {
             if (valuablesPrefabs != null && valuablesPrefabs.Count > 0)
-                Instantiate(valuablesPrefabs[Random.Range(0, valuablesPrefabs.Count)], transform.position, transform.rotation);
+                WorldManager.Instance.SpawnValuable(valuablesPrefabs[Random.Range(0, valuablesPrefabs.Count)], transform.position);
         } else
         {
             if (junkPrefabs != null && junkPrefabs.Count > 0)
-                Instantiate(junkPrefabs[Random.Range(0, junkPrefabs.Count)], transform.position, transform.rotation);
+                WorldManager.Instance.SpawnJunk(junkPrefabs[Random.Range(0, junkPrefabs.Count)], transform.position);
         }
     }
 
